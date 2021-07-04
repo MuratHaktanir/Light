@@ -13,15 +13,22 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView(isNight: $isNight)
-            VStack {
+            VStack(spacing: 50) {
+                
                 Text("Your light for midnight!")
                     .font(.title)
                     .foregroundColor(isNight ? .black : .white)
+                
+                Text("Tap me to open the light.")
+                    
+                    .font(.caption)
+                    .foregroundColor(isNight ? .black : .white)
+                    
             }
-            
             // Accessibility
             .accessibilityElement(children: .ignore)
             .accessibility(label: Text("Your light for midnight!"))
+            .accessibility(label: Text("Tap me to open the light."))
             
         }.onTapGesture {
             isNight.toggle()
